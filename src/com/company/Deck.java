@@ -14,8 +14,11 @@ public class Deck {
         }
         numUndealtCards = cards.size();
     }
-    public boolean isEmpty() {
-        return numUndealtCards == 0;
+    public boolean isEmpty()
+    {
+        if (numUndealtCards == 0)
+        return true;
+        else return false;
     }
     public int size() {
         return numUndealtCards;
@@ -23,17 +26,7 @@ public class Deck {
     @Override
     public String toString()
     {
-        String rtn = "size = " + size + "\nUndealt cards: \n";
-        for (int k = size - 1; k >= 0; k--) {
-            rtn = rtn + cards.get(k);
-            if (k != 0) {
-                rtn = rtn + ", ";
-            }
-            if ((size - k) % 2 == 0) {
-                rtn = rtn + "\n";
-            }
-        }
-        rtn = rtn + "\nDealt cards: \n";
+        String rtn = "Deck Size = " + size() + "\nUndealt cards: \n";
         for (int k = cards.size() - 1; k >= size; k--)
         {
             rtn = rtn + cards.get(k);
@@ -44,7 +37,18 @@ public class Deck {
                 rtn = rtn + "\n";
             }
         }
+        rtn = rtn + "\nDealt cards: \n";
+        for (int k = size - 1; k >= 0; k--) {
+            rtn = rtn + cards.get(k);
+            if (k != 0) {
+                rtn = rtn + ", ";
+            }
+            if ((size - k) % 2 == 0) {
+                rtn = rtn + "\n";
+            }
+        }
         rtn = rtn + "\n";
+        System.out.println("Is the deck empty = " + isEmpty());
         return rtn;
     }
 }
